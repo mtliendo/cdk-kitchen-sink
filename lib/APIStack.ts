@@ -23,6 +23,7 @@ interface APIStackProps extends StackProps {
 }
 
 export class APIStack extends Stack {
+	public readonly graphqlURL: string
 	constructor(scope: Construct, id: string, props: APIStackProps) {
 		super(scope, id, props)
 
@@ -76,6 +77,7 @@ export class APIStack extends Stack {
 			responseMappingTemplate: MappingTemplate.dynamoDbResultList(),
 		})
 
+		this.graphqlURL = api.graphqlUrl
 		new CfnOutput(this, 'GraphQLAPIURL', {
 			value: api.graphqlUrl,
 		})

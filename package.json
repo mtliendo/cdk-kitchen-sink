@@ -21,6 +21,7 @@
     "typescript": "~3.9.7"
   },
   "dependencies": {
+    "@aws-cdk/aws-amplify-alpha": "^2.50.0-alpha.0",
     "@aws-cdk/aws-appsync-alpha": "^2.50.0-alpha.0",
     "@aws-cdk/aws-cognito-identitypool-alpha": "^2.50.0-alpha.0",
     "aws-cdk-lib": "2.50.0",
