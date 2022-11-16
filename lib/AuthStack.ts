@@ -1,25 +1,18 @@
 import { CfnOutput, Stack, StackProps } from 'aws-cdk-lib'
 import {
 	AccountRecovery,
-	CfnUserPoolGroup,
 	UserPool,
 	UserPoolClient,
 	VerificationEmailStyle,
 } from 'aws-cdk-lib/aws-cognito'
+
 import { Construct } from 'constructs'
-import {
-	IdentityPool,
-	UserPoolAuthenticationProvider,
-} from '@aws-cdk/aws-cognito-identitypool-alpha'
-import { IRole } from 'aws-cdk-lib/aws-iam'
 
 interface AuthStackProps extends StackProps {}
 
 export class AuthStack extends Stack {
-	public readonly identityPoolId: CfnOutput
-	public readonly authenticatedRole: IRole
-	public readonly unauthenticatedRole: IRole
 	public readonly userpool: UserPool
+	public readonly userPoolClient: UserPoolClient
 
 	constructor(scope: Construct, id: string, props: AuthStackProps) {
 		super(scope, id, props)
@@ -45,22 +38,8 @@ export class AuthStack extends Stack {
 			userPool,
 		})
 
-		const identityPool = new IdentityPool(this, `IdentityPoolSamples`, {
-			identityPoolName: `IdentityPoolSamples`,
-			allowUnauthenticatedIdentities: true,
-			authenticationProviders: {
-				userPools: [
-					new UserPoolAuthenticationProvider({ userPool, userPoolClient }),
-				],
-			},
-		})
-
-		this.authenticatedRole = identityPool.authenticatedRole
-		this.unauthenticatedRole = identityPool.unauthenticatedRole
 		this.userpool = userPool
-		this.identityPoolId = new CfnOutput(this, 'IdentityPoolId', {
-			value: identityPool.identityPoolId,
-		})
+		this.userPoolClient = userPoolClient
 
 		new CfnOutput(this, 'UserPoolId', {
 			value: userPool.userPoolId,

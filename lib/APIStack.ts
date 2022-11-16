@@ -13,11 +13,13 @@ import {
 } from '@aws-cdk/aws-appsync-alpha'
 import { UserPool } from 'aws-cdk-lib/aws-cognito'
 import { IRole } from 'aws-cdk-lib/aws-iam'
+import { IdentityPool } from '@aws-cdk/aws-cognito-identitypool-alpha'
 
 interface APIStackProps extends StackProps {
 	userpool: UserPool
 	sampleTable: Table
 	unauthenticatedRole: IRole
+	identityPool: IdentityPool
 }
 
 export class APIStack extends Stack {
@@ -49,9 +51,7 @@ export class APIStack extends Stack {
 			props.sampleTable
 		)
 
-		api.grantQuery(props.unauthenticatedRole, 'getTodo')
-
-		api.grantQuery(props.unauthenticatedRole, 'listTodos')
+		api.grantQuery(props.unauthenticatedRole, 'getTodo', 'listTodos')
 
 		TodoDataSource.createResolver({
 			typeName: 'Query',

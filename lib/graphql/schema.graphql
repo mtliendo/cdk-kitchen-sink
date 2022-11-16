@@ -1,6 +1,6 @@
 type Query {
 	getTodo(id: ID!): Todo @aws_iam @aws_cognito_user_pools
-	listTodos(): [Todos] @aws_iam @aws_cognito_user_pools
+	listTodos: [Todo] @aws_iam @aws_cognito_user_pools
 }
 
 type Mutation {
