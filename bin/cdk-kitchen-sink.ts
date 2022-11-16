@@ -10,13 +10,13 @@ const app = new cdk.App()
 
 const authStack = new AuthStack(app, 'AuthStackSamples', {})
 
+const databaseStack = new DatabaseStack(app, 'DatabaseStackSamples', {})
 const apiStack = new APIStack(app, 'AppSyncAPIStackSamples', {
 	userpool: authStack.userpool,
 	sampleTable: databaseStack.sampleTable,
 	unauthenticatedRole: authStack.unauthenticatedRole,
 })
 
-const databaseStack = new DatabaseStack(app, 'DatabaseStackSamples', {})
 const fileStorageStack = new FileStorageStack(app, 'FileStorageStackSamples', {
 	authenticatedRole: authStack.authenticatedRole,
 	unauthenticatedRole: authStack.unauthenticatedRole,

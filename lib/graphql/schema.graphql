@@ -1,0 +1,22 @@
+type Query {
+	getTodo(id: ID!): Todo @aws_iam @aws_cognito_user_pools
+	listTodos(): [Todos] @aws_iam @aws_cognito_user_pools
+}
+
+type Mutation {
+	createTodo(input: TodoInput): Todo @aws_cognito_user_pools
+}
+
+type Todo {
+	id: ID!
+	name: String!
+	description: String
+	imgKey: String
+}
+
+input TodoInput {
+	id: ID
+	name: String!
+	description: String
+	imgkey: String
+}
