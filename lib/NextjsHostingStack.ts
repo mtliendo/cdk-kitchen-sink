@@ -17,8 +17,8 @@ interface HostingStackProps extends StackProps {
 export class AmplifyHostingStack extends Stack {
 	constructor(scope: Construct, id: string, props: HostingStackProps) {
 		super(scope, id, props)
-		const amplifyApp = new App(this, 'AmplifyCDK', {
-			appName: 'NextJS app from CDK',
+		const amplifyApp = new App(this, 'ProductViewer', {
+			appName: 'Kitchen Sink Product Example',
 			sourceCodeProvider: new GitHubSourceCodeProvider({
 				owner: props.owner,
 				repository: props.repository,

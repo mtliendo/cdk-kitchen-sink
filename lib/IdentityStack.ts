@@ -21,8 +21,8 @@ export class IdentityStack extends Stack {
 	constructor(scope: Construct, id: string, props: IdentityStackProps) {
 		super(scope, id, props)
 
-		const identityPool = new IdentityPool(this, `IdentityPoolSamples`, {
-			identityPoolName: `IdentityPoolSamples`,
+		const identityPool = new IdentityPool(this, `ProductIdentityPool`, {
+			identityPoolName: `ProductIdentityPool`,
 			allowUnauthenticatedIdentities: true,
 			authenticationProviders: {
 				userPools: [

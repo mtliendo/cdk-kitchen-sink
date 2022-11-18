@@ -17,7 +17,7 @@ export class AuthStack extends Stack {
 	constructor(scope: Construct, id: string, props: AuthStackProps) {
 		super(scope, id, props)
 
-		const userPool = new UserPool(this, `UserpoolSamples`, {
+		const userPool = new UserPool(this, `ProductUserpool`, {
 			selfSignUpEnabled: true,
 			accountRecovery: AccountRecovery.PHONE_AND_EMAIL,
 			userVerification: {
@@ -34,7 +34,7 @@ export class AuthStack extends Stack {
 			},
 		})
 
-		const userPoolClient = new UserPoolClient(this, `UserpoolClientSamples`, {
+		const userPoolClient = new UserPoolClient(this, `ProductUserpoolClient`, {
 			userPool,
 		})
 

@@ -1,20 +1,20 @@
 type Query {
-	getTodo(id: ID!): Todo @aws_iam @aws_cognito_user_pools
-	listTodos: [Todo] @aws_iam @aws_cognito_user_pools
+	getProduct(id: ID!): Product @aws_iam @aws_cognito_user_pools
+	listProducts: [Product] @aws_iam @aws_cognito_user_pools
 }
 
 type Mutation {
-	createTodo(input: TodoInput): Todo @aws_cognito_user_pools
+	createProduct(input: ProductInput): Product @aws_cognito_user_pools
 }
 
-type Todo {
+type Product {
 	id: ID!
 	name: String!
 	description: String
 	imgKey: String
 }
 
-input TodoInput {
+input ProductInput {
 	id: ID
 	name: String!
 	description: String

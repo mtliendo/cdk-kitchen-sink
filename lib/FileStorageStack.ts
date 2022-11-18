@@ -20,7 +20,7 @@ export class FileStorageStack extends Stack {
 	constructor(scope: Construct, id: string, props: FileStorageStackProps) {
 		super(scope, id, props)
 
-		const fileStorageBucket = new s3.Bucket(this, 's3-bucket', {
+		const fileStorageBucket = new s3.Bucket(this, 'productBucket', {
 			removalPolicy: RemovalPolicy.DESTROY,
 			autoDeleteObjects: true,
 			cors: [

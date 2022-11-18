@@ -5,16 +5,16 @@ import { Construct } from 'constructs'
 interface DatabaseStackProps extends StackProps {}
 
 export class DatabaseStack extends Stack {
-	public readonly sampleTable: Table
+	public readonly productTable: Table
 	constructor(scope: Construct, id: string, props: DatabaseStackProps) {
 		super(scope, id, props)
 
-		const sampleTable = new Table(this, 'SampleDB', {
+		const productTable = new Table(this, 'ProductTable', {
 			removalPolicy: RemovalPolicy.DESTROY,
 			billingMode: BillingMode.PAY_PER_REQUEST,
 			partitionKey: { name: 'id', type: AttributeType.STRING },
 		})
 
-		this.sampleTable = sampleTable
+		this.productTable = productTable
 	}
 }
