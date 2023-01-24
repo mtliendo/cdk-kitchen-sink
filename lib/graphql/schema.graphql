@@ -18,5 +18,5 @@ input TodoInput {
 	id: ID
 	name: String!
 	description: String
-	imgkey: String
+	imgKey: String
 }
